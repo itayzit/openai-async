@@ -1,13 +1,9 @@
 import pytest
 import openai_async
 import os
-import re
+from openai_async import test_utils
 
 _OPEN_AI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-
-def _is_image_url(url: str) -> bool:
-    return any(re.search(pattern, url, re.IGNORECASE) for pattern in ['.jpg', '.jpeg', '.png', '.gif'])
 
 
 @pytest.mark.asyncio
@@ -35,4 +31,25 @@ async def test_generate_img():
             "size": "256x256"
         },
     )
-    assert _is_image_url(response.json()["data"][0]["url"])
+    assert test_utils.is_image_url(response.json()["data"][0]["url"])
+
+
+@pytest.mark.asyncio
+async def test_embeddings():
+    response1 = await openai_async.embeddings(
+        _OPEN_AI_API_KEY,
+        timeout=2,
+        payload={"model": "text-embedding-ada-002", "input": "tooth doctor"},
+    )
+    response2 = await openai_async.embeddings(
+        _OPEN_AI_API_KEY,
+        timeout=2,
+        payload={"model": "text-embedding-ada-002", "input": "dentist"},
+    )
+    assert (
+        test_utils.cosine_similarity(
+            response1.json()["data"][0]["embedding"],
+            response2.json()["data"][0]["embedding"],
+        )
+        > 0.9
+    )

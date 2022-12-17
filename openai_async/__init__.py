@@ -1,1 +1,1 @@
-from openai_async.openai_async import complete, generate_img
+from openai_async.openai_async import complete, generate_img, embeddings
