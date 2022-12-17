@@ -8,7 +8,7 @@ setuptools.setup(
     name="openai-async",
     license='MIT',
     author="itayzit",
-    version="0.0.1",
+    version="0.0.2",
     author_email="itayzit@gmail.com",
     description="A light-weight, asynchronous client for OpenAI API - text completion, image generation and embeddings.",
     long_description=_LONG_DESCRIPTION,
