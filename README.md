@@ -1,6 +1,6 @@
 # openai-async
 
-An asynchronous client for openai services - completion, image generation and embedding.<br><br>
+An asynchronous client for openai services - completion, image generation and embeddings.<br><br>
 For the full documentation, go to the [openAI website](https://beta.openai.com/docs/api-reference).
 
 
@@ -15,7 +15,7 @@ For the full documentation, go to the [openAI website](https://beta.openai.com/d
 
     response = await openai_async.complete(
         "<API KEY>",
-        timeout=1,
+        timeout=2,
         payload={
             "model": "text-davinci-003",
             "prompt": "Correct this sentence: Me like you.",
@@ -24,29 +24,29 @@ For the full documentation, go to the [openAI website](https://beta.openai.com/d
     )
     print(response.json()["choices"][0]["text"].strip())
     >>> "I like you."
-
+Visit the [official docs](https://beta.openai.com/docs/api-reference/completions) for more info.
 ## Image generation
     import openai_async
     import urllib.request
     from PIL import Image
 
-    response = await openai_async.generate(
+    response = await openai_async.generate_img(
         "<API KEY>",
-        timeout=1,
+        timeout=8,
         payload={
             "prompt": "a white siamese cat",
             "n": 1,
-            "size": "1024x1024"
+            "size": "512x512"
         },
     )
-    urllib.request.urlretrieve(response["data"][0]["url"], "img.png")
+    urllib.request.urlretrieve(response.json()["data"][0]["url"], "img.png")
     Image.open("img.png").show()
 
-<img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-1yFGEVR2Z2q0cjpxYXoEQ9mE/user-I8zlH1LhK7LToUCDLQObNQNk/img-63b5z1tNyTg9YFjYvAIGE8Sp.png?st=2022-12-03T22%3A14%3A44Z&se=2022-12-04T00%3A14%3A44Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-12-03T12%3A00%3A31Z&ske=2022-12-04T12%3A00%3A31Z&sks=b&skv=2021-08-06&sig=m%2BcY1Yo8jY9bJwXccZrbW7k8K7tOBPNT6VMJViiq5oE%3D" width="60%">
-
+<img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-1yFGEVR2Z2q0cjpxYXoEQ9mE/user-I8zlH1LhK7LToUCDLQObNQNk/img-ilgejxsjIvGiGMNqzLC9Nbxw.png?st=2022-12-17T18%3A58%3A14Z&se=2022-12-17T20%3A58%3A14Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-12-17T12%3A17%3A09Z&ske=2022-12-18T12%3A17%3A09Z&sks=b&skv=2021-08-06&sig=E0SqiNHnQuPunDUoOB%2BU/AoUxuNU0TEw6tPZTVcs2Ko%3D" width="60%">
+Visit the [official docs](https://beta.openai.com/docs/api-reference/images/create) for more info.
 
 # Getting an API key
-To generate an openAI API key, while the openAI website, click your username on the right corner, then go to "View API keys" and create a key.
+To generate an openAI API key, while in the [openAI website](https://beta.openai.com), click on your username in the top right corner, then go to "View API keys" and create a key.
 <br><br>
 ### Disclaimer
 

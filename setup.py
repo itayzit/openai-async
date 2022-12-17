@@ -11,5 +11,5 @@ setuptools.setup(
     long_description=_LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     packages=setuptools.find_namespace_packages(),
-    install_requires=["httpx"],
+    install_requires=["httpx", "pytest"],
 )
