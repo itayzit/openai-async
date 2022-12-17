@@ -1,6 +1,6 @@
 # openai-async
 
-An asynchronous client for openai services - completion, image generation and embeddings.<br><br>
+A light-weight, asynchronous client for openai services - completion, image generation and embeddings.<br><br>
 For the full documentation, go to the [openAI website](https://beta.openai.com/docs/api-reference).
 
 
