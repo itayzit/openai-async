@@ -53,3 +53,20 @@ async def test_embeddings():
         )
         > 0.9
     )
+
+
+@pytest.mark.asyncio
+async def test_chat_complete():
+    response = await openai_async.chat_complete(
+        _OPEN_AI_API_KEY,
+        timeout=2,
+        payload={
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "user", "content": "Hello!"}],
+            "temperature": 0.0,
+        },
+    )
+    assert response.json()["choices"][0]["message"] == {
+        "role": "assistant",
+        "content": "\n\nHello there! How can I assist you today?",
+    }

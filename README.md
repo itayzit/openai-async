@@ -10,6 +10,18 @@ For the full documentation, go to the [openAI website](https://beta.openai.com/d
 
 # Use
 
+## Chat completion
+    response = await openai_async.chat_complete(
+        _OPEN_AI_API_KEY,
+        timeout=2,
+        payload={
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "user", "content": "Hello!"}],
+        },
+    )
+    print(response.json()["choices"][0]["message"])
+    >>> {"role": "assistant", "content": "\n\nHello there! How can I assist you today?"}
+Visit the [official documentation](https://platform.openai.com/docs/api-reference/chat) for more info.
 ## Text completion
     import openai_async
 
@@ -24,7 +36,7 @@ For the full documentation, go to the [openAI website](https://beta.openai.com/d
     )
     print(response.json()["choices"][0]["text"].strip())
     >>> "I like you."
-Visit the [official documentation](https://beta.openai.com/docs/api-reference/completions) for more info.
+Visit the [official documentation](https://platform.openai.com/docs/api-reference/completions) for more info.
 ## Image generation
     import openai_async
     import urllib.request
@@ -42,7 +54,7 @@ Visit the [official documentation](https://beta.openai.com/docs/api-reference/co
     urllib.request.urlretrieve(response.json()["data"][0]["url"], "img.png")
     Image.open("img.png").show()
 
-<img alt="a cat" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-1yFGEVR2Z2q0cjpxYXoEQ9mE/user-I8zlH1LhK7LToUCDLQObNQNk/img-ilgejxsjIvGiGMNqzLC9Nbxw.png?st=2022-12-17T18%3A58%3A14Z&se=2022-12-17T20%3A58%3A14Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-12-17T12%3A17%3A09Z&ske=2022-12-18T12%3A17%3A09Z&sks=b&skv=2021-08-06&sig=E0SqiNHnQuPunDUoOB%2BU/AoUxuNU0TEw6tPZTVcs2Ko%3D" width="60%">
+<img alt="a cat" src="https://cdn.openai.com/API/images/guides/image_generation_simple.webp" width="60%">
 <br>
 
 ## Embeddings

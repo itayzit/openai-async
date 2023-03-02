@@ -23,3 +23,4 @@ def _send_to_openai(endpoint_url: str,):
 complete = _send_to_openai("https://api.openai.com/v1/completions")
 generate_img = _send_to_openai("https://api.openai.com/v1/images/generations")
 embeddings = _send_to_openai("https://api.openai.com/v1/embeddings")
+chat_complete = _send_to_openai("https://api.openai.com/v1/chat/completions")
