@@ -1,6 +1,6 @@
 # openai-async
 
-A light-weight, asynchronous client for OpenAI API - text completion, image generation and embeddings.<br><br>
+A light-weight, asynchronous client for OpenAI API - chat completion, text completion, image generation and embeddings.<br><br>
 For the full documentation, go to the [openAI website](https://beta.openai.com/docs/api-reference).
 
 
